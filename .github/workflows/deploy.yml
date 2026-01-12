@@ -1,0 +1,33 @@
+name: Deploy Astro to GitHub Pages
+
+on:
+  push:
+    branches: [main]        # Se activa cada vez que se hace push a main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Entorno Linux en GitHub Actions
+    steps:
+      - uses: actions/checkout@v4    # Clona repo
+      - uses: actions/setup-node@v4  # Instala Node.js
+        with:
+          node-version: 24          
+      - run: npm ci                  # Instala dependencias exactas del package-lock
+      - run: npm run build            # Genera dist/ con Astro
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist                 # Sube dist/ como artefacto para deploy
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4   # Publica dist/ en GitHub Pages
