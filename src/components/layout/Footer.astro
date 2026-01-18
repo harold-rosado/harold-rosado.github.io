@@ -1,0 +1,66 @@
+---
+import Logo from '@/components/Logo.astro';
+import InstagramIcon from '@/components/icons/InstagramIcon.astro';
+import LinkedinIcon from '@/components/icons/LinkedinIcon.astro';
+import BehanceIcon from '@/components/icons/BehanceIcon.astro';
+import GithubIcon from '@/components/icons/GithubIcon.astro';
+
+const socials = [
+  {
+    href: 'https://instagram.com/ux_harold',
+    icon: InstagramIcon,
+    label: 'Instagram',
+  },
+  {
+    href: 'https://linkedin.com/in/haroldrm',
+    icon: LinkedinIcon,
+    label: 'LinkedIn',
+  },
+  {
+    href: 'https://behance.net/harold-rosado',
+    icon: BehanceIcon,
+    label: 'Behance',
+  },
+  {
+    href: 'https://github.com/harold-rosado',
+    icon: GithubIcon,
+    label: 'GitHub',
+  },
+];
+---
+
+<footer class="pb-12">
+  <div class="container mx-auto flex flex-col items-center px-4 text-center">
+    <div class="mb-2 flex flex-col items-center space-y-1" data-aos="fade-up">
+      <Logo class="mb-2 size-14" />
+      <h6 class="text-primary text-xl font-semibold tracking-tight">Harold Rosado</h6>
+      <p class="text-secondary">UX/UI Designer & Frontend Developer</p>
+    </div>
+
+    <nav class="mb-4 flex gap-4">
+      {
+        socials.map((social, index) => (
+          <a
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.label}
+            class="group border-border hover:border-accent/50 bg-background/50 rounded-xl border p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-500/10"
+            data-aos="fade-up"
+            data-aos-delay={index * 150}
+            data-aos-offset="0"
+          >
+            <social.icon class="text-secondary group-hover:text-accent size-6 transition-colors" />
+          </a>
+        ))
+      }
+    </nav>
+
+    <div>
+      <p class="text-secondary text-sm">
+        Copyright © {new Date().getFullYear()}
+        <span class="text-primary font-medium">Harold Rosado</span>.
+      </p>
+    </div>
+  </div>
+</footer>

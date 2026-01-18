@@ -1,0 +1,97 @@
+---
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+import iconAngular from '@/assets/illustrations/angular.svg';
+import iconTailwind from '@/assets/illustrations/tailwind.svg';
+import iconNestJs from '@/assets/illustrations/nestjs.svg';
+import iconJavascript from '@/assets/illustrations/javascript.svg';
+import coursesDev from '@/assets/images/coursesDev.webp';
+import iconReact from '@/assets/illustrations/react.svg';
+import iconAstro from '@/assets/illustrations/astro.svg';
+
+const tools = [
+  { name: 'Tailwind', icon: iconTailwind.src },
+  { name: 'Javascript', icon: iconJavascript.src },
+  { name: 'Astro', icon: iconAstro.src },
+  { name: 'Angular', icon: iconAngular.src },
+  /* { name: 'React', icon: iconReact.src }, */
+  { name: 'NestJS', icon: iconNestJs.src },
+];
+---
+
+<section
+  id="skillsDev"
+  class="bg-surface border-border scroll-mt-24 rounded-3xl border p-6 md:p-14"
+>
+  <SectionTitle data-aos="fade-up">Más allá del Diseño</SectionTitle>
+  <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+    <div class="lg:col-span-7" data-aos="fade-up">
+      <p class="text-secondary text-relaxed mb-4 text-lg">
+        Comencé en el mundo tech como <span class="text-primary font-medium">
+          desarrollador Frontend</span
+        > y con el tiempo, integré UX/UI y la enseñanza como parte natural de mi crecimiento. Esto me
+        permite diseñar con una visión técnica real.
+      </p>
+      <div>
+        <h4 class="text-accent mb-2 flex items-center gap-2 text-2xl font-bold">
+          Herramientas de Programación
+        </h4>
+        <p class="text-secondary mb-4 text-lg">
+          Tecnologías que utilizo para implementar y colaborar en productos digitales.
+        </p>
+
+        <ul class="mb-4 flex flex-wrap gap-6">
+          {
+            tools.map((tool, index) => (
+              <li
+                class="group flex flex-col items-center gap-2"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+              >
+                <div class="border-border group-hover:border-accent bg-background/50 group-hover:shadow-accent/10 rounded-2xl border p-2 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                  <img src={tool.icon} alt={tool.name} class="size-12 object-contain" />
+                </div>
+                <span class="text-secondary text-sm font-medium">{tool.name}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div class="border-border rounded-2xl border p-4">
+          <p class="text-secondary leading-relaxed">
+            <span class="text-primary mr-2 font-bold">Otros:</span>
+            Git, Bootstrap, React GraphQL, MySql, Arduino, Scratch, Scrum, Jira, Notion.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-5">
+      <div class="group relative" data-aos="fade-left">
+        <div
+          class="absolute -inset-2 rounded-3xl bg-indigo-500/10 blur-xl transition-all group-hover:bg-indigo-500/20"
+        >
+        </div>
+
+        <div
+          class="relative flex flex-col gap-6 rounded-3xl bg-linear-to-br from-indigo-600 to-indigo-700 p-6 shadow-xl backdrop-blur-xl md:p-8"
+        >
+          <blockquote class="text-center text-lg leading-relaxed text-white italic">
+            “La enseñanza me permite aportar a la comunidad mientras continúo creciendo como
+            diseñador y desarrollador”
+          </blockquote>
+
+          <div class="group relative overflow-hidden rounded-2xl">
+            <img
+              src={coursesDev.src}
+              alt="Harold Rosado impartiendo cursos"
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"
+            />
+
+            <!-- Overlay -->
+            <div class="pointer-events-none absolute inset-0 bg-indigo-500/5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

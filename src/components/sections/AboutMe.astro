@@ -1,0 +1,188 @@
+---
+import InstagramIcon from '@/components/icons/InstagramIcon.astro';
+import LinkedinIcon from '@/components/icons/LinkedinIcon.astro';
+import BehanceIcon from '@/components/icons/BehanceIcon.astro';
+import iconFigma from '@/assets/illustrations/figma.svg';
+import iconPhotoshop from '@/assets/illustrations/photoshop.svg';
+import iconIllustrator from '@/assets/illustrations/illustrator.svg';
+import Button from '@/components/ui/Button.astro';
+import DownloadIcon from '../icons/DownloadIcon.astro';
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+
+const skills = [
+  {
+    title: 'UX & Producto',
+    items: [
+      'User Research & Insights',
+      'Estrategia UX y definición del problema',
+      'Priorización de funcionalidades',
+      'User Flows & Arq. de Información',
+    ],
+  },
+  {
+    title: 'Validación & Entrega',
+    items: [
+      'Prototipado & Mockups',
+      'Pruebas de usabilidad y feedback',
+      'Handoff diseño – desarrollo',
+      'Iteración y mejora continua',
+    ],
+  },
+  {
+    title: 'UI & Interacción',
+    items: [
+      'Consistencia & Jerarquía visual',
+      'Diseño de interacción',
+      'Diseño responsive',
+      'Sistemas de Diseño',
+    ],
+  },
+];
+
+const socials = [
+  {
+    href: 'https://instagram.com/ux_harold',
+    icon: InstagramIcon,
+    label: '/ux_harold',
+  },
+  {
+    href: 'https://linkedin.com/in/haroldrm',
+    icon: LinkedinIcon,
+    label: '/in/haroldrm',
+  },
+  {
+    href: 'https://behance.net/harold-rosado',
+    icon: BehanceIcon,
+    label: '/harold-rosado',
+  },
+];
+
+const tools = [
+  { name: 'Figma', icon: iconFigma.src },
+  { name: 'Photoshop', icon: iconPhotoshop.src },
+  { name: 'Illustrator', icon: iconIllustrator.src },
+];
+---
+
+<section
+  id="aboutMe"
+  class="bg-surface border-border grid scroll-mt-24 grid-cols-1 gap-8 rounded-3xl border p-6 md:p-14 lg:grid-cols-12"
+>
+  <div class="flex flex-col gap-6 lg:col-span-8">
+    <article data-aos="fade-up" data-aos-duration="800">
+      <SectionTitle> Acerca de mí </SectionTitle>
+      <p class="text-secondary max-w-[65ch] text-lg leading-relaxed">
+        Diseñador <span class="text-accent font-medium">UX/UI con más de 4 años de experiencia</span
+        > creando productos web y móviles enfocados en resolver problemas reales de usuarios y objetivos
+        de negocio. Mi trabajo se centra en convertir ideas complejas en <span
+          class="text-accent font-medium">experiencias claras, usables y escalables</span
+        >, con una base sólida en desarrollo Frontend que facilita la implementación real de los
+        diseños.
+      </p>
+    </article>
+
+    <article>
+      <SectionTitle data-aos="fade-up"> Habilidades en UX/UI </SectionTitle>
+
+      <div class="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
+        {
+          skills.map((skill, index) => (
+            <div class="flex flex-col gap-3" data-aos="fade-up" data-aos-delay={index * 150}>
+              <h4 class="text-accent flex items-center gap-2 text-2xl font-semibold">
+                {skill.title}
+              </h4>
+              <ul class="ml-4 space-y-1">
+                {skill.items.map((item) => (
+                  <li class="text-secondary before:text-accent flex items-start gap-2 before:font-bold before:content-['•']">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+
+        <div class="flex flex-col gap-4" data-aos="fade-up">
+          <h4 class="text-accent text-2xl font-semibold">Herramientas de Diseño</h4>
+          <div class="flex flex-wrap gap-6">
+            {
+              tools.map((tool) => (
+                <div
+                  class="group flex flex-col items-center gap-2"
+                  data-aos="fade-up"
+                  data-aos-delay={tools.indexOf(tool) * 200}
+                >
+                  <div class="border-border group-hover:border-accent rounded-2xl border p-1 transition-all duration-300 group-hover:scale-110">
+                    <img src={tool.icon} alt={tool.name} class="size-14 object-contain" />
+                  </div>
+                  <span class="text-secondary">{tool.name}</span>
+                </div>
+              ))
+            }
+          </div>
+          <p class="text-secondary mt-2">
+            <span class="text-primary font-bold">Otros:</span> Framer, WordPress, Tailwind CSS.
+          </p>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <aside class="lg:col-span-4" data-aos="fade-left" data-aos-duration="800">
+    <div class="space-y-6 lg:sticky lg:top-24">
+      <div
+        class="rounded-3xl border border-indigo-500/30 bg-indigo-500/5 p-4 backdrop-blur-sm md:p-6"
+      >
+        <h4 class="text-accent mb-3 text-2xl font-bold">Contáctame</h4>
+
+        <div class="mb-4 space-y-3">
+          <div>
+            <p class="text-secondary mb-1 text-sm font-semibold tracking-widest uppercase">
+              Correo
+            </p>
+            <p class="text-primary break-all">haroldrosado90@gmail.com</p>
+          </div>
+          <div>
+            <p class="text-secondary mb-1 text-sm font-semibold tracking-widest uppercase">
+              Ubicación
+            </p>
+            <p class="text-primary">Sucre - Bolivia</p>
+          </div>
+        </div>
+
+        <nav>
+          <ul class="space-y-0.5">
+            {
+              socials.map((social) => (
+                <li>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    class="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-indigo-600/10"
+                  >
+                    <div class="rounded-lg bg-indigo-600 p-2 text-white transition-transform group-hover:scale-110">
+                      <social.icon class="size-7" />
+                    </div>
+                    <span class="text-secondary group-hover:text-primary transition-colors">
+                      {social.label}
+                    </span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+          <a
+            href="https://drive.google.com/drive/folders/1JHkavVN_PF6AEvxW0K4fwTU6rQRx2BvO?usp=sharing"
+            target="_blank"
+            rel="no-referrer noopener"
+            class="mt-4 block"
+          >
+            <Button color="accent" variant="outlined" fullWidth class="text-nowrap">
+              Descargar CV
+            </Button>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </aside>
+</section>

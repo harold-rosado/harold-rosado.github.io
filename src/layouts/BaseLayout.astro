@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const title = 'Harold Rosado';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Portfolio Harold" />
+    <meta name="keywords" content="Harold, Portfolio, Web Developer, UX/UI Designer" />
+    <meta name="author" content="Harold Rosado" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Header />
+    <main class="mx-auto w-full max-w-6xl px-4">
+      <slot />
+      <Footer />
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+</style>
+<script is:inline>
+  const getTheme = () => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    return 'dark';
+  };
+
+  const theme = getTheme();
+  document.documentElement.setAttribute('data-theme', theme);
+</script>
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  const initAOS = () => {
+    AOS.init({
+      duration: 1000, //Duración de la animación en milisegundos
+      once: false, //Activa la animación solo una vez
+      mirror: true, //Habilita la animación al hacer scroll hacia arriba
+      delay: 100, //Retraso antes de que comience la animación
+      offset: 80, //Desplazamiento desde el punto de activación
+      /* disable: 'mobile', */ //Deshabilita AOS en dispositivos móviles
+    });
+  };
+
+  initAOS();
+</script>

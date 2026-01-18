@@ -1,0 +1,177 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Logo from '@/components/Logo.astro';
+import MenuIcon from '@/components/icons/MenuIcon.astro';
+import CloseIcon from '@/components/icons/CloseIcon.astro';
+import SunIcon from '@/components/icons/SunIcon.astro';
+import MoonIcon from '@/components/icons/MoonIcon.astro';
+
+const navItems = [
+  { name: 'Proyectos', href: '#projects' },
+  { name: 'Acerca de', href: '#aboutMe' },
+  { name: 'Cursos', href: '#courses' },
+  { name: 'Contacto', href: '#contact' },
+];
+---
+
+<header
+  id="main-header"
+  class="sticky top-0 z-100 w-full border-b border-white/5 px-4 py-2 backdrop-blur-md"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
+    <div class="flex flex-1 items-center">
+      <a href="/" class="relative z-50 inline-block transition-transform hover:scale-105">
+        <Logo class="size-14" />
+      </a>
+    </div>
+
+    <nav
+      class="bg-surface border-border hidden items-center gap-1 rounded-full border px-4 py-2 shadow-sm md:flex"
+    >
+      {
+        navItems.map(({ name, href }) => (
+          <a
+            href={href}
+            class="group text-primary hover:text-accent relative px-4 py-2 text-sm transition-colors"
+          >
+            {name}
+            <span class="bg-accent absolute inset-x-4 -bottom-1 h-0.5 origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex flex-1 items-center justify-end gap-3">
+      <a
+        href="https://drive.google.com/drive/folders/1JHkavVN_PF6AEvxW0K4fwTU6rQRx2BvO?usp=sharing"
+        target="_blank"
+        rel="no-referrer noopener"
+        class="hidden md:block"
+      >
+        <Button color="accent" variant="filled" fullWidth class="text-nowrap">
+          Descargar CV
+        </Button>
+      </a>
+
+      <div
+        class="bg-surface border-border inline-flex items-center rounded-full border p-1 shadow-sm"
+      >
+        <button
+          id="theme-btn-light"
+          class="hover:bg-accent/10 sun-icon cursor-pointer rounded-full p-1.5 transition-all duration-300"
+          aria-label="Modo claro"
+        >
+          <SunIcon class="size-5" />
+        </button>
+
+        <button
+          id="theme-btn-dark"
+          class="hover:bg-accent/10 moon-icon cursor-pointer rounded-full p-1.5 transition-all duration-300"
+          aria-label="Modo oscuro"
+        >
+          <MoonIcon class="size-5" />
+        </button>
+      </div>
+
+      <button
+        id="menu-toggle"
+        class="text-primary relative z-50 cursor-pointer p-2 focus:outline-none md:hidden"
+        aria-expanded="false"
+      >
+        <MenuIcon class="menu-icon block size-6" />
+        <CloseIcon class="close-icon hidden size-6" />
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="invisible absolute top-full left-0 w-full origin-top scale-95 opacity-0 transition-all duration-300 md:hidden"
+  >
+    <div class="px-4 py-3">
+      <nav
+        class="bg-surface/90 border-border flex flex-col gap-1 rounded-2xl border p-4 shadow-xl backdrop-blur-xl"
+      >
+        {
+          navItems.map(({ name, href }) => (
+            <a
+              href={href}
+              class="hover:bg-accent/10 text-primary hover:text-accent rounded-lg px-4 py-3 transition-colors"
+            >
+              {name}
+            </a>
+          ))
+        }
+        <hr class="border-border my-2" />
+        <a
+          href="https://drive.google.com/drive/folders/1JHkavVN_PF6AEvxW0K4fwTU6rQRx2BvO?usp=sharing"
+          target="_blank"
+          rel="no-referrer noopener"
+        >
+          <Button color="accent" variant="filled" fullWidth class="text-nowrap">
+            Descargar CV
+          </Button>
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style is:global>
+  body {
+    transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-theme='light'] .sun-icon,
+  [data-theme='dark'] .moon-icon {
+    background-color: #4f46e5;
+    color: white;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  [data-theme='light'] .moon-icon,
+  [data-theme='dark'] .sun-icon {
+    opacity: 0.6;
+  }
+
+  /* Hover suave para el icono NO activo */
+  [data-theme='light'] .moon-icon:hover,
+  [data-theme='dark'] .sun-icon:hover {
+    opacity: 1;
+    background-color: rgba(var(--color-accent-rgb), 0.1);
+  }
+</style>
+
+<script>
+  const btnMenu = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const lightBtn = document.getElementById('theme-btn-light');
+  const darkBtn = document.getElementById('theme-btn-dark');
+
+  const setTheme = (newTheme: string) => {
+    if (newTheme !== document.documentElement.getAttribute('data-theme')) {
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+  };
+
+  lightBtn?.addEventListener('click', () => setTheme('light'));
+  darkBtn?.addEventListener('click', () => setTheme('dark'));
+
+  btnMenu?.addEventListener('click', () => {
+    const isExpanded = btnMenu.getAttribute('aria-expanded') === 'true';
+    btnMenu.setAttribute('aria-expanded', String(!isExpanded));
+
+    btnMenu.querySelector('.menu-icon')?.classList.toggle('hidden');
+    btnMenu.querySelector('.close-icon')?.classList.toggle('hidden');
+
+    if (!isExpanded) {
+      menu?.classList.remove('invisible', 'opacity-0', 'scale-95');
+      menu?.classList.add('opacity-100', 'scale-100');
+    } else {
+      menu?.classList.remove('opacity-100', 'scale-100');
+      menu?.classList.add('opacity-0', 'scale-95');
+      setTimeout(() => menu?.classList.add('invisible'), 300);
+    }
+  });
+</script>

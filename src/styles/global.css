@@ -1,1 +1,71 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@theme {
+  --color-base: var(--color-bg-base);
+  --color-surface: var(--color-bg-surface);
+  --color-elevated: var(--color-bg-elevated);
+
+  --color-primary: var(--color-text-primary);
+  --color-secondary: var(--color-text-secondary);
+  --color-accent: var(--color-text-accent);
+
+  --color-logo-main: var(--color-logo-main);
+
+  --color-border: var(--color-border-default);
+
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+}
+
+/* ---------- Light Theme ---------- */
+:root {
+  --color-bg-base: #f8fafc; /* slate-50 */
+  --color-bg-surface: #ffffff; /* white */
+  --color-bg-elevated: #f1f5f9; /* slate-100 */
+  /* --color-bg-elevated: #e2e8f0; */ /* slate-200 */
+
+  --color-text-primary: #020617; /* slate-950 */
+  --color-text-secondary: #475569; /* slate-600 */
+  --color-text-accent: #4f46e5; /* indigo-600 */
+
+  --color-logo-main: #4f46e5; /* indigo-600 */
+
+  --color-border: #e2e8f0; /* slate-200 */
+
+  --color-success: #16a34a; /* green-600 */
+  --color-warning: #f59e0b; /* amber-500 */
+  --color-error: #dc2626; /* red-600 */
+}
+
+/* ---------- Dark Theme ---------- */
+:root[data-theme='dark'] {
+  --color-bg-base: #020617; /* slate-950 */
+  --color-bg-surface: #0f172a; /* slate-900 */
+  --color-bg-elevated: #020617; /* slate-950 */
+
+  --color-text-primary: #f8fafc; /* slate-50 */
+  --color-text-secondary: #94a3b8; /* slate-400 */
+  --color-text-accent: #818cf8; /* indigo-500 */
+
+  --color-logo-main: #f8fafc; /* slate-50 */
+
+  --color-border: #1e293b; /* slate-800 */
+
+  --color-success: #22c55e; /* green-500 */
+  --color-warning: #fbbf24; /* amber-400 */
+  --color-error: #f87171; /* red-400 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Onest', 'Inter', sans-serif;
+  }
+
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-primary);
+    @apply transition-colors duration-300;
+  }
+}
