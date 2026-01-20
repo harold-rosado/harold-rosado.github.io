@@ -21,17 +21,17 @@ const { title, description, image, tags, href, class: className, ...rest } = Ast
   ]}
   {...rest}
 >
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="relative block h-60 overflow-hidden bg-linear-to-br from-indigo-500 to-indigo-700 p-6"
-  >
-    <img
-      src={image}
-      alt={`Portada del proyecto ${title}`}
-      class="h-full w-full rounded-xl object-cover shadow-2xl transition-transform duration-500 group-hover:scale-105"
-    />
+  <a href={href} target="_blank" rel="noopener noreferrer">
+    <figure
+      class="relative block h-60 overflow-hidden bg-linear-to-br from-indigo-500 to-indigo-700 p-6"
+    >
+      <img
+        src={image}
+        alt={`Portada del proyecto ${title}`}
+        class="h-full w-full rounded-xl object-cover shadow-2xl transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+    </figure>
   </a>
 
   <div class="flex flex-1 flex-col p-6 text-start">

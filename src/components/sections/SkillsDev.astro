@@ -20,7 +20,7 @@ const tools = [
 
 <section
   id="skillsDev"
-  class="bg-surface border-border scroll-mt-24 rounded-3xl border p-6 md:p-14"
+  class="bg-surface border-border scroll-mt-24 overflow-hidden rounded-3xl border p-6 md:p-14"
 >
   <SectionTitle data-aos="fade-up">Más allá del Diseño</SectionTitle>
   <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
@@ -48,7 +48,7 @@ const tools = [
                 data-aos-delay={index * 100}
               >
                 <div class="border-border group-hover:border-accent bg-background/50 group-hover:shadow-accent/10 rounded-2xl border p-2 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
-                  <img src={tool.icon} alt={tool.name} class="size-12 object-contain" />
+                  <img src={tool.icon} aria-hidden="true" class="size-12 object-contain" alt="" />
                 </div>
                 <span class="text-secondary text-sm font-medium">{tool.name}</span>
               </li>
@@ -72,25 +72,29 @@ const tools = [
         >
         </div>
 
-        <div
+        <figure
           class="relative flex flex-col gap-6 rounded-3xl bg-linear-to-br from-indigo-600 to-indigo-700 p-6 shadow-xl backdrop-blur-xl md:p-8"
         >
           <blockquote class="text-center text-lg leading-relaxed text-white italic">
-            “La enseñanza me permite aportar a la comunidad mientras continúo creciendo como
-            diseñador y desarrollador”
+            <p>
+              “La enseñanza me permite aportar a la comunidad mientras continúo creciendo como
+              diseñador y desarrollador”
+            </p>
           </blockquote>
+          <figcaption class="sr-only">Cita de Harold Rosado</figcaption>
 
           <div class="group relative overflow-hidden rounded-2xl">
             <img
               src={coursesDev.src}
-              alt="Harold Rosado impartiendo cursos"
+              alt="Harold Rosado dando una clase de programación frente a estudiantes"
               class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"
+              loading="lazy"
             />
 
             <!-- Overlay -->
             <div class="pointer-events-none absolute inset-0 bg-indigo-500/5"></div>
           </div>
-        </div>
+        </figure>
       </div>
     </div>
   </div>

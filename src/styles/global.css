@@ -60,12 +60,28 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Onest', 'Inter', sans-serif;
   }
 
   body {
+    font-family: 'Onest', 'Inter', sans-serif;
     background-color: var(--color-bg-base);
     color: var(--color-text-primary);
     @apply transition-colors duration-300;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+@font-face {
+  font-family: 'Onest';
+  src: url('/fonts/onest.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }

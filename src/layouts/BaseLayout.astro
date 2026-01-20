@@ -3,34 +3,45 @@ import '../styles/global.css';
 import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 
-const title = 'Harold Rosado';
+const { title = 'Harold Rosado — UX/UI Designer' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Portfolio Harold" />
-    <meta name="keywords" content="Harold, Portfolio, Web Developer, UX/UI Designer" />
-    <meta name="author" content="Harold Rosado" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta name="color-scheme" content="dark" />
+    <script is:inline>
+      const theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+
     <title>{title}</title>
-    <!-- Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap"
-      rel="stylesheet"
-    />
+    <meta name="description" content="Portfolio Harold" />
+    <link rel="canonical" href="https://harold-rosado.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="author" content="Harold Rosado" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Harold Rosado - Portfolio" />
+    <meta property="og:description" content="UX/UI Designer & Frontend Developer" />
+    <meta property="og:image" content="https://harold-rosado.github.io/share-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="robots" content="index, follow" />
   </head>
   <body>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:bg-white focus:p-4"
+    >
+      Saltar al contenido principal
+    </a>
     <Header />
-    <main class="mx-auto w-full max-w-6xl overflow-hidden px-4">
+    <main id="main-content" class="mx-auto w-full max-w-6xl px-4" tabindex="-1">
       <slot />
     </main>
     <Footer />
@@ -46,30 +57,19 @@ const title = 'Harold Rosado';
     margin: 0;
     width: 100%;
     min-height: 100vh;
-    overflow-x: hidden;
   }
 </style>
-<script is:inline>
-  const getTheme = () => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    return 'dark';
-  };
 
-  const theme = getTheme();
-  document.documentElement.setAttribute('data-theme', theme);
-</script>
 <script>
   import AOS from 'aos';
   import 'aos/dist/aos.css';
   const initAOS = () => {
     AOS.init({
       duration: 1000, //Duración de la animación en milisegundos
-      once: false, //Activa la animación solo una vez
-      mirror: true, //Habilita la animación al hacer scroll hacia arriba
+      once: true, //Activa la animación solo una vez
       delay: 100, //Retraso antes de que comience la animación
       offset: 80, //Desplazamiento desde el punto de activación
+      /* mirror: true, */ //Habilita la animación al hacer scroll hacia arriba
       /* disable: 'mobile', */ //Deshabilita AOS en dispositivos móviles
     });
   };

@@ -8,7 +8,7 @@ import MoonIcon from '@/components/icons/MoonIcon.astro';
 
 const navItems = [
   { name: 'Proyectos', href: '#projects' },
-  { name: 'Acerca de', href: '#aboutMe' },
+  { name: 'Sobre mí', href: '#aboutMe' },
   { name: 'Cursos', href: '#courses' },
   { name: 'Contacto', href: '#contact' },
 ];
@@ -20,13 +20,18 @@ const navItems = [
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-4">
     <div class="flex flex-1 items-center">
-      <a href="/" class="relative z-50 inline-block transition-transform hover:scale-105">
+      <a
+        href="/"
+        class="relative z-50 inline-block transition-transform hover:scale-105"
+        aria-label="Ir al inicio"
+      >
         <Logo class="size-14" />
       </a>
     </div>
 
     <nav
       class="bg-surface border-border hidden items-center gap-1 rounded-full border px-4 py-2 shadow-sm md:flex"
+      aria-label="Navegación principal"
     >
       {
         navItems.map(({ name, href }) => (
@@ -77,6 +82,8 @@ const navItems = [
         id="menu-toggle"
         class="text-primary relative z-50 cursor-pointer p-2 focus:outline-none md:hidden"
         aria-expanded="false"
+        aria-label="Toggle mobile menu"
+        aria-controls="mobile-menu"
       >
         <MenuIcon class="menu-icon block size-6" />
         <CloseIcon class="close-icon hidden size-6" />
@@ -86,6 +93,8 @@ const navItems = [
 
   <div
     id="mobile-menu"
+    role="menu"
+    aria-hidden="true"
     class="invisible absolute top-full left-0 w-full origin-top scale-95 opacity-0 transition-all duration-300 md:hidden"
   >
     <div class="px-4 py-3">
@@ -148,30 +157,66 @@ const navItems = [
   const lightBtn = document.getElementById('theme-btn-light');
   const darkBtn = document.getElementById('theme-btn-dark');
 
-  const setTheme = (newTheme: string) => {
-    if (newTheme !== document.documentElement.getAttribute('data-theme')) {
-      document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    }
+  const updateAriaPressed = (theme: string) => {
+    lightBtn?.setAttribute('aria-pressed', String(theme === 'light'));
+    darkBtn?.setAttribute('aria-pressed', String(theme === 'dark'));
   };
+
+  const setTheme = (newTheme: string) => {
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateAriaPressed(newTheme);
+  };
+
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  updateAriaPressed(currentTheme);
 
   lightBtn?.addEventListener('click', () => setTheme('light'));
   darkBtn?.addEventListener('click', () => setTheme('dark'));
 
-  btnMenu?.addEventListener('click', () => {
+  // --- Menú Mobile ---
+  const closeMenu = () => {
+    btnMenu?.setAttribute('aria-expanded', 'false');
+    menu?.setAttribute('aria-hidden', 'true');
+    btnMenu?.querySelector('.menu-icon')?.classList.remove('hidden');
+    btnMenu?.querySelector('.close-icon')?.classList.add('hidden');
+
+    menu?.classList.remove('opacity-100', 'scale-100');
+    menu?.classList.add('opacity-0', 'scale-95');
+    setTimeout(() => menu?.classList.add('invisible'), 300);
+  };
+
+  const openMenu = () => {
+    btnMenu?.setAttribute('aria-expanded', 'true');
+    menu?.setAttribute('aria-hidden', 'false');
+    btnMenu?.querySelector('.menu-icon')?.classList.add('hidden');
+    btnMenu?.querySelector('.close-icon')?.classList.remove('hidden');
+
+    menu?.classList.remove('invisible', 'opacity-0', 'scale-95');
+    menu?.classList.add('opacity-100', 'scale-100');
+  };
+
+  btnMenu?.addEventListener('click', (e: MouseEvent) => {
+    e.stopPropagation();
     const isExpanded = btnMenu.getAttribute('aria-expanded') === 'true';
-    btnMenu.setAttribute('aria-expanded', String(!isExpanded));
+    isExpanded ? closeMenu() : openMenu();
+  });
 
-    btnMenu.querySelector('.menu-icon')?.classList.toggle('hidden');
-    btnMenu.querySelector('.close-icon')?.classList.toggle('hidden');
+  document.addEventListener('click', (event: Event) => {
+    const target = event.target;
 
-    if (!isExpanded) {
-      menu?.classList.remove('invisible', 'opacity-0', 'scale-95');
-      menu?.classList.add('opacity-100', 'scale-100');
-    } else {
-      menu?.classList.remove('opacity-100', 'scale-100');
-      menu?.classList.add('opacity-0', 'scale-95');
-      setTimeout(() => menu?.classList.add('invisible'), 300);
+    if (!(target instanceof Node)) return;
+
+    const isClickInsideMenu = menu?.contains(target);
+    const isClickOnButton = btnMenu?.contains(target);
+    const isMenuVisible = btnMenu?.getAttribute('aria-expanded') === 'true';
+
+    if (!isClickInsideMenu && !isClickOnButton && isMenuVisible) {
+      closeMenu();
     }
+  });
+
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => closeMenu());
   });
 </script>

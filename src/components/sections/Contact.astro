@@ -10,7 +10,7 @@ import backgroundImage from '@/assets/images/background-cta.webp';
 
 <section
   id="contact"
-  class="grid scroll-mt-24 grid-cols-1 items-stretch gap-6 lg:grid-cols-2 lg:gap-12"
+  class="grid scroll-mt-24 grid-cols-1 items-stretch gap-6 overflow-hidden lg:grid-cols-2 lg:gap-12"
 >
   <div
     class="group relative flex min-h-87.5 items-center justify-center overflow-hidden rounded-3xl p-8 md:p-12"
@@ -48,7 +48,13 @@ import backgroundImage from '@/assets/images/background-cta.webp';
       </p>
     </div>
 
-    <form class="flex flex-col gap-4" action="https://formspree.io/f/xykkkqbg" method="POST">
+    <form
+      role="form"
+      aria-label="Formulario de contacto"
+      class="flex flex-col gap-4"
+      action="https://formspree.io/f/xykkkqbg"
+      method="POST"
+    >
       <input type="text" name="_gotcha" style="display:none" />
       <FormField label="Nombre completo" name="name" placeholder="Jhon Doe" autocomplete="name" />
       <FormField

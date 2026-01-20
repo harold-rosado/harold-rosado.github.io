@@ -14,17 +14,20 @@ import backgroundLines from '@/assets/images/background-lines.webp';
     alt=""
     class="absolute inset-0 -z-20 h-full w-full object-cover opacity-60"
     fetchpriority="high"
+    aria-hidden="true"
   />
   <img
     src={backgroundLines.src}
     alt=""
     class="absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
+    aria-hidden="true"
+    fetchpriority="high"
   />
 
   <div
     class="relative z-20 mb-10 flex flex-col justify-center gap-2 text-center"
     data-aos="fade-down"
-    data-aos-duration="1000"
+    data-aos-duration="800"
     data-aos-offset="0"
   >
     <span class="text-accent text-lg md:text-xl">- Hola 👋</span>
@@ -41,7 +44,12 @@ import backgroundLines from '@/assets/images/background-lines.webp';
     </div>
 
     <div class="animate-float absolute top-1/4 left-8 z-30 md:left-20">
-      <img src={iconFigma.src} alt="Figma" class="size-24 -rotate-12 drop-shadow-xl md:size-32" />
+      <img
+        src={iconFigma.src}
+        alt=""
+        aria-hidden="true"
+        class="size-24 -rotate-12 drop-shadow-xl md:size-32"
+      />
     </div>
 
     <div
@@ -51,29 +59,38 @@ import backgroundLines from '@/assets/images/background-lines.webp';
         src={iconMouse.src}
         alt="Mouse"
         class="size-8 -translate-y-4 drop-shadow-xl md:size-10"
+        aria-hidden="true"
       />
-      <div
+      <span
         class="hidden translate-y-4 rounded-full bg-blue-500 px-6 py-3 text-lg whitespace-nowrap text-white shadow-lg sm:block"
       >
         Frontend Dev
-      </div>
+      </span>
     </div>
 
     <div class="relative flex w-full flex-col items-center">
       <img
         src={profilePic.src}
-        alt="Foto de Perfil Harold"
+        alt="Fotografía de Harold Rosado, UX/UI Designer"
         class="img-profile relative z-10 w-full max-w-96 md:max-w-lg"
+        width="384"
+        height="384"
+        loading="eager"
         fetchpriority="high"
       />
       <div
-        class="sm:bg-surface sm:border-border relative z-40 mt-6 flex w-full flex-col items-center gap-3 sm:absolute sm:bottom-4 sm:left-1/2 sm:mt-0 sm:w-auto sm:-translate-x-1/2 sm:flex-row sm:rounded-full sm:border sm:p-2 sm:shadow-2xl sm:backdrop-blur-md"
+        class="sm:border-border sm:bg-surface/80 relative z-40 mt-6 flex w-full flex-col items-center gap-3 sm:absolute sm:bottom-4 sm:left-1/2 sm:mt-0 sm:w-auto sm:-translate-x-1/2 sm:flex-row sm:rounded-full sm:border sm:p-2 sm:shadow-2xl sm:backdrop-blur-md"
         data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-offset="0"
       >
-        <Button variant="filled"> Ver proyectos </Button>
-        <Button variant="outlined"> Contáctame </Button>
+        <a href="#projects" class="w-full sm:w-auto">
+          <Button variant="filled" fullWidth> Ver proyectos </Button>
+        </a>
+
+        <a href="#contact" class="w-full sm:w-auto">
+          <Button variant="outlined" fullWidth> Contáctame </Button>
+        </a>
       </div>
     </div>
   </div>

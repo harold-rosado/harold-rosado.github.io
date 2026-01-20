@@ -24,7 +24,13 @@ const id = `field-${name}`;
 <div class={`flex w-full flex-col gap-2 ${className}`}>
   <label for={id} class="text-primary ml-1 font-medium">
     {label}
-    {required && <span class="text-red-500">*</span>}
+    {
+      required && (
+        <span class="text-red-500" aria-hidden="true">
+          *
+        </span>
+      )
+    }
   </label>
   <input
     id={id}
@@ -32,6 +38,7 @@ const id = `field-${name}`;
     name={name}
     placeholder={placeholder}
     required={required}
+    aria-required={required}
     class="border-border bg-elevated/50 text-primary placeholder:text-secondary/40 w-full rounded-xl border px-4 py-3 transition-all duration-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 focus:outline-none"
   />
 </div>
