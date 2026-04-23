@@ -1,0 +1,120 @@
+---
+import background from '@/assets/illustrations/background.svg';
+import profilePic from '@/assets/images/harold-photo-profile.webp';
+import Button from '@/components/ui/Button.astro';
+import backgroundLines from '@/assets/images/background-lines.webp';
+
+import { Icon } from 'astro-icon/components';
+
+
+---
+
+<section id="hero" class="relative flex w-full flex-col items-center justify-center py-4">
+  <img
+    id="bg-blur"
+    src={background.src}
+    alt=""
+    class="absolute inset-0 -z-20 h-full w-full object-cover opacity-60"
+    fetchpriority="high"
+    aria-hidden="true"
+  />
+  <img
+    src={backgroundLines.src}
+    alt=""
+    class="absolute inset-0 -z-10 h-full w-full object-cover opacity-60"
+    aria-hidden="true"
+    fetchpriority="high"
+  />
+
+  <div
+    class="relative z-20 mb-10 flex flex-col justify-center gap-2 text-center"
+    data-aos="fade-down"
+    data-aos-duration="800"
+    data-aos-offset="0"
+  >
+    <span class="text-accent text-lg md:text-xl">- Hola 👋</span>
+    <h1 class="text-5xl tracking-normal sm:text-6xl">
+      Soy <span class="text-accent font-semibold">Harold</span>
+    </h1>
+    <h2 class="text-primary text-5xl sm:text-6xl">Product Designer</h2>
+  </div>
+
+  <div class="relative mx-auto -mt-10 flex w-full max-w-3xl flex-col items-center">
+    <div
+      class="absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500 blur-[150px]"
+    >
+    </div>
+
+    <div class="animate-float absolute top-1/4 left-8 z-30 md:left-20">
+      <Icon name="illustrations/figma" class="size-24 -rotate-12 drop-shadow-xl md:size-32" />
+    </div>
+
+    <!-- Frontend Dev (chip) -->
+    <div
+      class="animate-float-delayed absolute top-1/2 right-3 z-30 flex items-start gap-2 md:right-0"
+    >
+      <Icon name="illustrations/mouse" class="size-8 -translate-y-4 drop-shadow-xl md:size-10" />
+      <span
+        class="hidden translate-y-4 rounded-full bg-indigo-500 px-6 py-3 text-lg whitespace-nowrap text-white shadow-lg sm:block"
+      >
+        UX/UI Designer
+      </span>
+    </div>
+
+    <div class="relative flex w-full flex-col items-center">
+      <img
+        src={profilePic.src}
+        alt="Fotografía de Harold Rosado, UX/UI Designer"
+        class="img-profile relative z-10 w-full max-w-96 md:max-w-lg"
+        width="384"
+        height="384"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div
+        class="sm:border-border sm:bg-surface/80 relative z-40 mt-6 flex w-full flex-col items-center gap-3 sm:absolute sm:bottom-4 sm:left-1/2 sm:mt-0 sm:w-auto sm:-translate-x-1/2 sm:flex-row sm:rounded-full sm:border sm:p-2 sm:shadow-2xl sm:backdrop-blur-md"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-offset="0"
+      >
+        <a href="#projects" class="w-full sm:w-auto">
+          <Button variant="filled" fullWidth> Ver proyectos </Button>
+        </a>
+
+        <a href="#contact" class="w-full sm:w-auto">
+          <Button variant="outlined" fullWidth> Contáctame </Button>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-float-delayed {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  #bg-blur {
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .img-profile {
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  }
+</style>

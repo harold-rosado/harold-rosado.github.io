@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+
+const { title = 'Harold Rosado — Product Designer' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <meta name="color-scheme" content="dark" />
+    <script is:inline>
+      const theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+
+    <title>{title}</title>
+    <meta name="description" content="Portfolio Harold" />
+    <link rel="canonical" href="https://harold-rosado.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="author" content="Harold Rosado" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Harold Rosado - Portfolio" />
+    <meta
+      property="og:description"
+      content="Product Designer · UX/UI Designer · FullStack Developer"
+    />
+    <meta property="og:image" content="https://harold-rosado.github.io/share-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="robots" content="index, follow" />
+  </head>
+  <body>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:z-100 focus:bg-white focus:p-4"
+    >
+      Saltar al contenido principal
+    </a>
+    <Header />
+    <main id="main-content" class="mx-auto w-full max-w-6xl px-4" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+  }
+</style>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  const initAOS = () => {
+    AOS.init({
+      duration: 1000, //Duración de la animación en milisegundos
+      once: true, //Activa la animación solo una vez
+      delay: 100, //Retraso antes de que comience la animación
+      offset: 80, //Desplazamiento desde el punto de activación
+      /* mirror: true, */ //Habilita la animación al hacer scroll hacia arriba
+      /* disable: 'mobile', */ //Deshabilita AOS en dispositivos móviles
+    });
+  };
+
+  initAOS();
+</script>

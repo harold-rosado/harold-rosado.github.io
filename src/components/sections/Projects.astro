@@ -1,0 +1,62 @@
+---
+import SectionTitle from '@/components/ui/SectionTitle.astro';
+import ProjectCard from '@/components/ui/ProjectCard.astro';
+
+// Imágenes
+import cover10minds from '@/assets/images/cover10minds.webp';
+import coverEconomixHub from '@/assets/images/coverEconomixHub.webp';
+import coverTsAura from '@/assets/images/coverTsAura.webp';
+
+const projects = [
+  {
+    title: '10Minds',
+    description:
+      'Una EdTech enfocada en cursos de capacitación y desarrollo de software que transformamos de una plataforma cerrada a una solución escalable internacionalmente',
+    image: cover10minds.src,
+    tags: ['Diseño UX/UI', 'Educación'],
+    href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+  },
+  {
+    title: 'EconomixHub',
+    description:
+      'Plataforma educativa orientada a facilitar la comprensión de conceptos económicos mediante simuladores interactivos y libros digitales',
+    image: coverEconomixHub.src,
+    tags: ['Diseño UX/UI', 'Economía'],
+    href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+  },
+  {
+    title: 'TS Aura',
+    description:
+      'Transformación de un software de escritorio Windows a una plataforma web avanzada para el diseño de cajas acústicas con visualización 3D',
+    image: coverTsAura.src,
+    tags: ['Diseño UX/UI', 'Cajas Acústicas'],
+    href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+  },
+];
+---
+
+<section id="projects" class="bg-surface border-border scroll-mt-24 rounded-3xl border p-6 md:p-14">
+  <div class="mb-8 flex flex-col items-center text-center">
+    <SectionTitle>Últimos proyectos</SectionTitle>
+    <p class="text-secondary mx-auto mt-2 max-w-3xl text-lg leading-relaxed">
+      Estos son algunos de los proyectos que representan mi enfoque en UX/UI y diseño de producto,
+      desde la investigación hasta la solución final
+    </p>
+    <p class="text-accent mt-2 text-lg font-semibold">
+      Cada proyecto incluye proceso, decisiones de diseño y aprendizajes
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      projects.map((project, index) => (
+        <ProjectCard
+          {...project}
+          data-aos="fade-up"
+          data-aos-delay={index * 150}
+          data-aos-offset="0"
+        />
+      ))
+    }
+  </div>
+</section>

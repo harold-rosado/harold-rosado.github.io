@@ -1,0 +1,21 @@
+---
+import Hero from '@/components/sections/Hero.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AboutMe from '@/components/sections/AboutMe.astro';
+import Projects from '@/components/sections/Projects.astro';
+import SkillsDev from '@/components/sections/SkillsDev.astro';
+import Contact from '@/components/sections/Contact.astro';
+import Courses from '@/components/sections/Courses.astro';
+
+---
+
+<BaseLayout>
+  <div class="mb-24 flex flex-col gap-16">
+    <Hero />
+    <Projects />
+    <AboutMe />
+    <SkillsDev />
+    <Courses />
+    <Contact />
+  </div>
+</BaseLayout>
