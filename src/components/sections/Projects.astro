@@ -3,34 +3,64 @@ import SectionTitle from '@/components/ui/SectionTitle.astro';
 import ProjectCard from '@/components/ui/ProjectCard.astro';
 
 // Imágenes
-import cover10minds from '@/assets/images/cover10minds.webp';
-import coverEconomixHub from '@/assets/images/coverEconomixHub.webp';
-import coverTsAura from '@/assets/images/coverTsAura.webp';
+import cover10minds from '@/assets/images/cover-10minds.webp';
+import coverEconomixHub from '@/assets/images/cover-economixhub.webp';
+import coverTsAura from '@/assets/images/cover-tsaura.webp';
+import coverLMD from '@/assets/images/cover-lmd.webp';
+import coverMinos from '@/assets/images/cover-minos.webp';
+import coverMoviker from '@/assets/images/cover-moviker.webp';
 
 const projects = [
   {
     title: '10Minds',
     description:
-      'Una EdTech enfocada en cursos de capacitación y desarrollo de software que transformamos de una plataforma cerrada a una solución escalable internacionalmente',
+      'Plataforma e-learning rediseñada para expandir su alcance y mejorar la experiencia de aprendizaje',
     image: cover10minds.src,
-    tags: ['Diseño UX/UI', 'Educación'],
+    tags: ['EdTech', 'Rediseño'],
     href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+    bg_personalized: 'bg-linear-to-br from-sky-500 via-sky-600 to-sky-700',
   },
   {
     title: 'EconomixHub',
     description:
-      'Plataforma educativa orientada a facilitar la comprensión de conceptos económicos mediante simuladores interactivos y libros digitales',
+      'Plataforma educativa que enseña economía y finanzas mediante simuladores interactivos',
     image: coverEconomixHub.src,
-    tags: ['Diseño UX/UI', 'Economía'],
+    tags: ['Economía', 'Simuladores'],
     href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+    bg_personalized: 'bg-linear-to-br from-green-500 via-green-600 to-green-700',
   },
   {
     title: 'TS Aura',
-    description:
-      'Transformación de un software de escritorio Windows a una plataforma web avanzada para el diseño de cajas acústicas con visualización 3D',
+    description: 'Plataforma web para diseñar cajas acústicas con simulación y visualización 3D',
     image: coverTsAura.src,
-    tags: ['Diseño UX/UI', 'Cajas Acústicas'],
+    tags: ['SaaS', 'Cajas Acústicas'],
     href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+    bg_personalized: 'bg-linear-to-br from-blue-500 via-blue-600 to-blue-700',
+  },
+  {
+    title: 'La Movida Disyuntiva',
+    description: 'Plataforma para gestionar episodios, contenidos y publicaciones de podcasts',
+    image: coverLMD.src,
+    tags: ['Podcast', 'Gestión'],
+    href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+    bg_personalized: 'bg-linear-to-br from-violet-500 via-violet-600 to-violet-700',
+  },
+  {
+    title: 'Minos',
+    description:
+      'Sistema para la gestión de contactos y eventos políticos con Whatsapp Business API',
+    image: coverMinos.src,
+    tags: ['Eventos', 'Política'],
+    href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+    bg_personalized: 'bg-linear-to-br from-cyan-500 via-cyan-600 to-cyan-700',
+  },
+  {
+    title: 'Moviker',
+    description: 'Tienda online especializada en la venta de zapatillas y ropa deportiva',
+    image: coverMoviker.src,
+    tags: ['Ecommerce', 'Educativo'],
+    href: 'https://www.behance.net/gallery/241947109/Harold-Portfolio',
+    bg_personalized: 'bg-linear-to-br from-rose-500 via-rose-600 to-rose-700',
   },
 ];
 ---

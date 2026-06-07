@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-base: var(--color-bg-base);
+  --color-canvas: var(--color-bg-canvas);
   --color-surface: var(--color-bg-surface);
   --color-elevated: var(--color-bg-elevated);
 
@@ -20,7 +20,7 @@
 
 /* ---------- Light Theme ---------- */
 :root {
-  --color-bg-base: #f8fafc; /* slate-50 */
+  --color-bg-canvas: #f8fafc; /* slate-50 */
   --color-bg-surface: #ffffff; /* white */
   --color-bg-elevated: #f1f5f9; /* slate-100 */
   /* --color-bg-elevated: #e2e8f0; */ /* slate-200 */
@@ -40,7 +40,7 @@
 
 /* ---------- Dark Theme ---------- */
 :root[data-theme='dark'] {
-  --color-bg-base: #020617; /* slate-950 */
+  --color-bg-canvas: #020617; /* slate-950 */
   --color-bg-surface: #0f172a; /* slate-900 */
   --color-bg-elevated: #020617; /* slate-950 */
 
@@ -64,7 +64,7 @@
 
   body {
     font-family: 'Onest', 'Inter', sans-serif;
-    background-color: var(--color-bg-base);
+    background-color: var(--color-bg-canvas);
     color: var(--color-text-primary);
     @apply transition-colors duration-300;
   }
