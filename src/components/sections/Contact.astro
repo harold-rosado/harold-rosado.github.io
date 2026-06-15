@@ -29,24 +29,23 @@ import { Icon } from 'astro-icon/components';
         class="mb-6 flex size-20 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-2xl"
       >
         <Icon name="lucide:message-circle-more" class="size-10 text-white" />
-
       </div>
 
       <h2 class="mb-4 text-3xl font-bold text-white md:text-4xl">
-        ¿Hablamos de tu próximo proyecto?
+        Let's Talk About Your Next Project?
       </h2>
       <p class="max-w-md text-lg leading-relaxed text-white">
-        Ya sea que tengas una idea clara o estés empezando, me encantaría escucharte y ver cómo
-        podemos colaborar
+        Whether you have a clear idea or are still exploring, I'd love to hear from you and see how
+        we can collaborate.
       </p>
     </div>
   </div>
 
   <div class="bg-surface border-border/50 rounded-3xl border p-4 md:p-8" data-aos="fade-left">
     <div class="mb-6">
-      <SectionTitle>Contáctame</SectionTitle>
+      <SectionTitle>Contact Me</SectionTitle>
       <p class="text-secondary mt-4">
-        Cuéntame un poco más sobre lo que necesitas y me pondré en contacto contigo pronto
+        Tell me a little more about what you need and I'll be in touch with you soon.
       </p>
     </div>
 
@@ -58,7 +57,7 @@ import { Icon } from 'astro-icon/components';
       method="POST"
     >
       <input type="text" name="_gotcha" style="display:none" />
-      <FormField label="Nombre completo" name="name" placeholder="Jhon Doe" autocomplete="name" />
+      <FormField label="Full Name" name="name" placeholder="Jhon Doe" autocomplete="name" />
       <FormField
         label="Email"
         type="email"
@@ -66,14 +65,14 @@ import { Icon } from 'astro-icon/components';
         placeholder="jhondoe@gmail.com"
         autocomplete="email"
       />
-      <FormField label="Asunto" name="subject" placeholder="¿En qué puedo ayudarte?" />
+      <FormField label="Subject" name="subject" placeholder="What can I help you with?" />
       <FormTextArea
-        label="Mensaje"
+        label="Message"
         name="message"
-        placeholder="Cuéntame más sobre tu proyecto..."
+        placeholder="Tell me more about your project..."
       />
       <div>
-        <Button type="submit" fullWidth class="md:w-auto">Enviar Mensaje</Button>
+        <Button type="submit" fullWidth class="md:w-auto">Send Message</Button>
       </div>
     </form>
   </div>

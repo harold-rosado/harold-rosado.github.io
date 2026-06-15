@@ -6,30 +6,30 @@ import { Icon } from 'astro-icon/components';
 
 const skills = [
   {
-    title: 'UX & Producto',
+    title: 'UX & Product',
     items: [
       'User Research & Insights',
-      'Estrategia UX y definición del problema',
-      'Priorización de funcionalidades',
-      'User Flows & Arq. de Información',
+      'UX Strategy & Problem Definition',
+      'Feature Prioritization',
+      'User Flows & Inf. Architecture',
     ],
   },
   {
-    title: 'Validación & Entrega',
+    title: 'Validation & Delivery',
     items: [
-      'Prototipado & Mockups',
-      'Pruebas de usabilidad y feedback',
-      'Handoff diseño – desarrollo',
-      'Iteración y mejora continua',
+      'Prototypes & Mockups',
+      'Usability Testing & Feedback',
+      'Design–Development Handoff',
+      'Iteration & Continuous Improvement',
     ],
   },
   {
-    title: 'UI & Interacción',
+    title: 'UI & Interaction',
     items: [
-      'Consistencia & Jerarquía visual',
-      'Diseño de interacción',
-      'Diseño responsive',
-      'Sistemas de Diseño',
+      'Visual Consistency & Hierarchy',
+      'Interaction Design',
+      'Responsive Design',
+      'Design Systems',
     ],
   },
 ];
@@ -65,19 +65,19 @@ const tools = [
 >
   <div class="flex flex-col gap-6 lg:col-span-8">
     <article data-aos="fade-up" data-aos-duration="800">
-      <SectionTitle> Sobre mí </SectionTitle>
+      <SectionTitle> About Me </SectionTitle>
       <p class="text-secondary max-w-[65ch] text-lg leading-relaxed">
-        Diseñador <span class="text-accent font-medium">UX/UI con más de 6 años de experiencia</span
-        > creando productos web y móviles enfocados en resolver problemas reales de usuarios y objetivos
-        de negocio. Mi trabajo se centra en convertir ideas complejas en <span
-          class="text-accent font-medium">experiencias claras, usables y escalables</span
-        >, con una base sólida en desarrollo de software que facilita la implementación real de los
-        diseños.
+        UX/UI Designer with over <span class="text-accent font-medium">6 years of experience</span> creating
+        web and mobile products focused on solving real user problems and business goals. My work centers
+        on turning complex ideas into <span class="text-accent font-medium"
+          >clear, usable, and scalable experiences</span
+        >, with a solid foundation in software development that facilitates the real implementation
+        of designs.
       </p>
     </article>
 
     <article>
-      <SectionTitle data-aos="fade-up"> Habilidades en UX/UI </SectionTitle>
+      <SectionTitle data-aos="fade-up"> UX/UI Skills </SectionTitle>
 
       <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
         {
@@ -98,7 +98,7 @@ const tools = [
         }
 
         <div class="flex flex-col gap-4" data-aos="fade-up">
-          <h4 class="text-accent text-2xl font-semibold">Herramientas de Diseño</h4>
+          <h4 class="text-accent text-2xl font-semibold">Design Tools</h4>
           <div class="flex flex-wrap gap-6">
             {
               tools.map((tool) => (
@@ -116,7 +116,7 @@ const tools = [
             }
           </div>
           <p class="text-secondary mt-2">
-            <span class="text-primary font-bold">Otros:</span> Framer, WordPress, Tailwind CSS.
+            <span class="text-primary font-bold">Other:</span> Framer, WordPress, Tailwind CSS.
           </p>
         </div>
       </div>
@@ -128,18 +128,16 @@ const tools = [
       <div
         class="rounded-3xl border border-indigo-500/30 bg-indigo-500/5 p-4 backdrop-blur-sm md:p-6"
       >
-        <h4 class="text-accent mb-3 text-2xl font-bold">Contáctame</h4>
+        <h4 class="text-accent mb-3 text-2xl font-bold">Contact me</h4>
 
         <div class="mb-4 space-y-3">
           <div>
-            <p class="text-secondary mb-1 text-sm font-semibold tracking-widest uppercase">
-              Correo
-            </p>
+            <p class="text-secondary mb-1 text-sm font-semibold tracking-widest uppercase">Email</p>
             <p class="text-primary break-all">haroldrosado90@gmail.com</p>
           </div>
           <div>
             <p class="text-secondary mb-1 text-sm font-semibold tracking-widest uppercase">
-              Ubicación
+              Location
             </p>
             <p class="text-primary">Sucre - Bolivia</p>
           </div>
@@ -173,7 +171,7 @@ const tools = [
             class="mt-4 block"
           >
             <Button color="accent" variant="filled" fullWidth class="text-nowrap">
-              Descargar CV
+              Download CV
             </Button>
           </a>
         </nav>
