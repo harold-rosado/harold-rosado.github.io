@@ -3,95 +3,194 @@ import SectionTitle from '@/components/ui/SectionTitle.astro';
 import coursesDev from '@/assets/images/coursesDev.webp';
 import { Icon } from 'astro-icon/components';
 
-const tools = [
-  { name: 'Tailwind', illustration: 'illustrations/tailwind' },
-  { name: 'Javascript', illustration: 'illustrations/javascript' },
-  { name: 'Astro', illustration: 'illustrations/astro', color: 'text-primary' },
-  { name: 'Angular', illustration: 'illustrations/angular' },
-  /* { name: 'React', illustration: 'illustrations/react' }, */
-  { name: 'NestJS', illustration: 'illustrations/nestjs' },
+type Category = 'frontend' | 'backend' | 'design' | 'workflow' | 'ai';
+
+// Colored logos come from `logos:`; brands that are black in their own colors use the
+// monochrome `simple-icons:` version so they follow the theme text color.
+const techs: { name: string; icon: string; category: Category }[] = [
+  { name: 'Angular', icon: 'logos:angular-icon', category: 'frontend' },
+  { name: 'React', icon: 'logos:react', category: 'frontend' },
+  { name: 'Astro', icon: 'simple-icons:astro', category: 'frontend' },
+  { name: 'TypeScript', icon: 'logos:typescript-icon', category: 'frontend' },
+  { name: 'JavaScript', icon: 'logos:javascript', category: 'frontend' },
+  { name: 'Tailwind', icon: 'logos:tailwindcss-icon', category: 'frontend' },
+  { name: 'Sass', icon: 'logos:sass', category: 'frontend' },
+
+  { name: 'NestJS', icon: 'logos:nestjs', category: 'backend' },
+  { name: 'Node.js', icon: 'logos:nodejs-icon', category: 'backend' },
+  { name: 'GraphQL', icon: 'logos:graphql', category: 'backend' },
+  { name: 'PostgreSQL', icon: 'logos:postgresql', category: 'backend' },
+  { name: 'MySQL', icon: 'simple-icons:mysql', category: 'backend' },
+  { name: 'Firebase', icon: 'logos:firebase-icon', category: 'backend' },
+  { name: 'WordPress', icon: 'simple-icons:wordpress', category: 'backend' },
+  { name: 'Python', icon: 'logos:python', category: 'backend' },
+  { name: 'Docker', icon: 'logos:docker-icon', category: 'backend' },
+
+  { name: 'Figma', icon: 'logos:figma', category: 'design' },
+  { name: 'Photoshop', icon: 'logos:adobe-photoshop', category: 'design' },
+  { name: 'Illustrator', icon: 'logos:adobe-illustrator', category: 'design' },
+
+  { name: 'Git', icon: 'logos:git-icon', category: 'workflow' },
+  { name: 'GitHub', icon: 'simple-icons:github', category: 'workflow' },
+  { name: 'Jira', icon: 'logos:jira', category: 'workflow' },
+  { name: 'Scrum', icon: 'lucide:repeat', category: 'workflow' },
+
+  { name: 'Claude', icon: 'logos:claude-icon', category: 'ai' },
+  { name: 'OpenAI', icon: 'simple-icons:openai', category: 'ai' },
+  { name: 'n8n', icon: 'logos:n8n', category: 'ai' },
 ];
+
+const filters: { id: Category | 'all'; label: string }[] = [
+  { id: 'all', label: 'All' },
+  { id: 'frontend', label: 'Front-end' },
+  { id: 'backend', label: 'Back-end' },
+  { id: 'design', label: 'Design' },
+  { id: 'workflow', label: 'Workflow' },
+  { id: 'ai', label: 'AI' },
+];
+
+const countFor = (id: Category | 'all') =>
+  id === 'all' ? techs.length : techs.filter((tech) => tech.category === id).length;
 ---
 
 <section
   id="skillsDev"
   class="bg-surface border-border scroll-mt-24 overflow-hidden rounded-3xl border p-6 md:p-14"
 >
-  <SectionTitle data-aos="fade-up">Beyond Design</SectionTitle>
-  <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
-    <div class="lg:col-span-7" data-aos="fade-up">
-      <p class="text-secondary text-relaxed mb-4 text-lg">
-        I started in tech as a <span class="text-primary font-medium"> Full Stack Developer</span> and
-        over time, UX/UI and teaching became natural parts of my growth. This allows me to design with
-        a genuine technical perspective.
+  <SectionTitle data-aos="fade-up">Engineering & AI</SectionTitle>
+
+  <div class="grid grid-cols-1 gap-4 lg:grid-cols-5">
+    <div
+      class="border-border bg-elevated/40 flex flex-col justify-center gap-4 rounded-2xl border p-6 md:p-8 lg:col-span-3"
+      data-aos="fade-up"
+    >
+      <p class="text-secondary text-lg leading-relaxed">
+        I started in tech as a developer and still write production code every day, building
+        interfaces with <span class="text-primary font-medium"
+          >Angular, React, and Astro and supporting back-end work with <span
+            class="text-primary font-medium">NestJS</span
+          > and PostgreSQL, including AI API integrations.
+        </span>
+        <p class="text-secondary text-lg leading-relaxed">
+          I also lead <span class="text-primary font-medium">courses, workshops, and talks</span> on programming,
+          design, and robotics. <span class="italic"
+            >“Sharing real knowledge to add value to the community.”</span
+          >
+        </p>
       </p>
-      <div>
-        <h4 class="text-accent mb-2 flex items-center gap-2 text-2xl font-bold">
-          Programming Tools
-        </h4>
-        <p class="text-secondary mb-4 text-lg">
-          Technologies I use to implement and collaborate on digital products.
+    </div>
+    <figure
+      class="flex flex-col gap-4 overflow-hidden rounded-2xl bg-linear-to-br from-indigo-500 via-indigo-600 to-indigo-700 p-5 shadow-xl lg:col-span-2"
+      data-aos="fade-up"
+    >
+      <div class="group relative min-h-56 flex-1 overflow-hidden rounded-xl">
+        <img
+          src={coursesDev.src}
+          alt="Harold Rosado teaching a programming class to students"
+          class="absolute inset-0 h-full w-full object-cover object-right-bottom transition-transform duration-500 group-hover:scale-103"
+          loading="lazy"
+        />
+      </div>
+      <!-- <figcaption class="text-center text-lg text-white italic"></figcaption> -->
+    </figure>
+    <div
+      class="border-border bg-elevated/40 rounded-2xl border p-6 md:p-8 lg:col-span-5"
+      data-aos="fade-up"
+    >
+      <div class="mb-6 flex flex-col">
+        <h4 class="text-accent text-2xl font-bold">Tech Stack</h4>
+        <p class="text-secondary mt-1">
+          The tools behind my work, from interfaces and APIs to design and AI. Filter by area.
         </p>
 
-        <ul class="mb-4 flex flex-wrap gap-6">
+        <div class="mt-4 flex flex-wrap gap-2" role="group" aria-label="Filter technologies">
           {
-            tools.map((tool, index) => (
-              <li
-                class="group flex flex-col items-center gap-2"
-                data-aos="fade-up"
-                data-aos-delay={index * 100}
+            filters.map((filter) => (
+              <button
+                type="button"
+                class="stack-filter border-border text-secondary hover:border-accent/50 hover:text-primary bg-surface inline-flex cursor-pointer items-center gap-2 rounded-full border px-4 py-1.5 text-sm font-medium transition-colors"
+                data-filter={filter.id}
+                aria-pressed={filter.id === 'all' ? 'true' : 'false'}
               >
-                <div class="border-border group-hover:border-accent bg-background/50 group-hover:shadow-accent/10 rounded-2xl border p-2 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
-                  <Icon
-                    name={tool.illustration}
-                    class:list={['size-12 object-contain', tool.color]}
-                  />
-                </div>
-                <span class="text-secondary text-sm font-medium">{tool.name}</span>
-              </li>
+                {filter.label}
+                <span class="stack-filter-count text-tertiary text-xs">{countFor(filter.id)}</span>
+              </button>
             ))
           }
-        </ul>
-
-        <div class="border-border bg-elevated rounded-2xl border p-4">
-          <p class="text-secondary leading-relaxed">
-            <span class="text-primary mr-2 font-bold">Others:</span>
-            Git, Bootstrap, React, GraphQL, PostgreSQL, MySQL, Arduino, Scratch, Scrum, Jira, Notion.
-          </p>
         </div>
       </div>
-    </div>
 
-    <div class="lg:col-span-5">
-      <div class="group relative" data-aos="fade-left">
-        <div
-          class="absolute -inset-2 rounded-3xl bg-indigo-500/10 blur-xl transition-all group-hover:bg-indigo-500/20"
-        >
-        </div>
-
-        <figure
-          class="relative flex flex-col gap-6 rounded-3xl bg-linear-to-br from-indigo-500 via-indigo-600 to-indigo-700 p-6 shadow-xl backdrop-blur-sm md:p-8"
-        >
-          <blockquote class="text-center text-lg leading-relaxed text-white italic">
-            <p>
-              “I share real knowledge, learnings, and experiences to add value to the community”
-            </p>
-          </blockquote>
-          <figcaption class="sr-only">Cita de Harold Rosado</figcaption>
-
-          <div class="group relative overflow-hidden rounded-2xl">
-            <img
-              src={coursesDev.src}
-              alt="Harold Rosado dando una clase de programación frente a estudiantes"
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-103"
-              loading="lazy"
-            />
-
-            <!-- Overlay -->
-            <div class="pointer-events-none absolute inset-0 bg-indigo-500/5"></div>
-          </div>
-        </figure>
-      </div>
+      <ul class="grid grid-cols-[repeat(auto-fill,minmax(5.5rem,1fr))] gap-x-3 gap-y-5">
+        {
+          techs.map((tech) => (
+            <li
+              class="stack-item group flex flex-col items-center gap-2"
+              data-category={tech.category}
+            >
+              <div class="border-border bg-surface group-hover:border-accent group-hover:shadow-accent/10 rounded-2xl border p-3 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-lg">
+                <Icon name={tech.icon} class="text-primary size-10" aria-hidden="true" />
+              </div>
+              <span class="text-secondary text-center text-sm font-medium">{tech.name}</span>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </div>
+
+  <style>
+    .stack-filter[aria-pressed='true'] {
+      border-color: var(--color-text-accent);
+      background-color: #4f46e5; /* indigo-600 */
+      color: white;
+    }
+
+    .stack-filter[aria-pressed='true'] .stack-filter-count {
+      color: rgb(255 255 255 / 0.75);
+    }
+
+    @keyframes stack-in {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.96);
+      }
+    }
+
+    .stack-item.is-entering {
+      animation: stack-in 0.35s ease-out both;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stack-item.is-entering {
+        animation: none;
+      }
+    }
+  </style>
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.stack-filter');
+    const items = document.querySelectorAll<HTMLLIElement>('.stack-item');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+
+        let visibleIndex = 0;
+        items.forEach((item) => {
+          const show = filter === 'all' || item.dataset.category === filter;
+          item.hidden = !show;
+          item.classList.remove('is-entering');
+
+          if (show) {
+            // Restart the entrance animation with a small stagger
+            void item.offsetWidth;
+            item.style.animationDelay = `${visibleIndex++ * 30}ms`;
+            item.classList.add('is-entering');
+          }
+        });
+      });
+    });
+  </script>
 </section>

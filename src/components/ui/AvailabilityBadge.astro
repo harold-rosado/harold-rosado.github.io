@@ -1,0 +1,30 @@
+---
+interface Props {
+  label?: string;
+  size?: 'sm' | 'lg';
+  class?: string;
+}
+
+const { label = 'Available for work', size = 'sm', class: className } = Astro.props;
+
+const sizes = {
+  sm: { pill: 'gap-2 px-4 py-1.5 text-sm', dot: 'size-2.5' },
+  lg: { pill: 'gap-3 px-5 py-2.5 text-base sm:px-6 sm:py-3 sm:text-lg', dot: 'size-3' },
+};
+---
+
+<span
+  class:list={[
+    'border-border bg-surface/80 text-primary inline-flex items-center rounded-full border font-medium whitespace-nowrap shadow-lg backdrop-blur-md',
+    sizes[size].pill,
+    className,
+  ]}
+>
+  <span class:list={['relative flex', sizes[size].dot]} aria-hidden="true">
+    <span
+      class="absolute inline-flex size-full animate-ping rounded-full bg-emerald-500 opacity-60 motion-reduce:animate-none"
+    ></span>
+    <span class="relative inline-flex size-full rounded-full bg-emerald-500"></span>
+  </span>
+  {label}
+</span>

@@ -7,6 +7,7 @@
 
   --color-primary: var(--color-text-primary);
   --color-secondary: var(--color-text-secondary);
+  --color-tertiary: var(--color-text-tertiary);
   --color-accent: var(--color-text-accent);
 
   --color-logo-main: var(--color-logo-main);
@@ -19,19 +20,23 @@
 }
 
 /* ---------- Light Theme ---------- */
+/* Off-white surfaces and softened text instead of pure #fff / near-black,
+   so switching from dark mode doesn't feel like a glare flash. */
 :root {
-  --color-bg-canvas: #f8fafc; /* slate-50 */
-  --color-bg-surface: #ffffff; /* white */
-  --color-bg-elevated: #f1f5f9; /* slate-100 */
-  /* --color-bg-elevated: #e2e8f0; */ /* slate-200 */
+  color-scheme: light;
 
-  --color-text-primary: #020617; /* slate-950 */
+  --color-bg-canvas: #eceef3; /* soft cool gray */
+  --color-bg-surface: #f7f8fa; /* off-white */
+  --color-bg-elevated: #e8ebf0;
+
+  --color-text-primary: #1e293b; /* slate-800 */
   --color-text-secondary: #475569; /* slate-600 */
+  --color-text-tertiary: #64748b; /* slate-500 */
   --color-text-accent: #4f46e5; /* indigo-600 */
 
   --color-logo-main: #4f46e5; /* indigo-600 */
 
-  --color-border: #e2e8f0; /* slate-200 */
+  --color-border-default: #d9dee6;
 
   --color-success: #16a34a; /* green-600 */
   --color-warning: #f59e0b; /* amber-500 */
@@ -40,17 +45,20 @@
 
 /* ---------- Dark Theme ---------- */
 :root[data-theme='dark'] {
+  color-scheme: dark;
+
   --color-bg-canvas: #020617; /* slate-950 */
   --color-bg-surface: #0f172a; /* slate-900 */
   --color-bg-elevated: #020617; /* slate-950 */
 
   --color-text-primary: #f8fafc; /* slate-50 */
   --color-text-secondary: #94a3b8; /* slate-400 */
+  --color-text-tertiary: #7c8ba1; /* between slate-400 and slate-500 */
   --color-text-accent: #818cf8; /* indigo-500 */
 
   --color-logo-main: #f8fafc; /* slate-50 */
 
-  --color-border: #1e293b; /* slate-800 */
+  --color-border-default: #1e293b; /* slate-800 */
 
   --color-success: #22c55e; /* green-500 */
   --color-warning: #fbbf24; /* amber-400 */

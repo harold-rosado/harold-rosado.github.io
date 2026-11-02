@@ -1,4 +1,4 @@
-# 🚀 Harold Rosado | UX/UI Designer & Frontend Developer
+# 🚀 Harold Rosado | Full Stack Developer & Product Designer
 
 Welcome to my professional portfolio. This project is an optimized, accessible, and high-performance landing page built with **Astro** and **Tailwind CSS**.
 

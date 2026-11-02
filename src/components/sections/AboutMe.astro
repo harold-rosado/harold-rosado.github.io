@@ -1,61 +1,79 @@
 ---
 import Button from '@/components/ui/Button.astro';
 import SectionTitle from '@/components/ui/SectionTitle.astro';
+import AvailabilityBadge from '@/components/ui/AvailabilityBadge.astro';
 
 import { Icon } from 'astro-icon/components';
 
+const stats = [
+  { value: '6+', label: 'Years building web products' },
+  { value: '10+', label: 'Digital products shipped' },
+  { value: '40%', label: 'Faster delivery with AI' },
+  { value: '25%', label: 'Web performance gains' },
+];
+
 const skills = [
   {
-    title: 'UX & Product',
+    title: 'Front-end',
     items: [
-      'User Research & Insights',
-      'UX Strategy & Problem Definition',
-      'Feature Prioritization',
-      'User Flows & Inf. Architecture',
+      'Production UIs with Angular, React & Astro',
+      'TypeScript, Tailwind CSS & Angular Material',
+      'Responsive, accessible interfaces',
+      'Design systems turned into components',
     ],
   },
   {
-    title: 'Validation & Delivery',
+    title: 'Back-end & DevOps',
     items: [
-      'Prototypes & Mockups',
-      'Usability Testing & Feedback',
-      'Design–Development Handoff',
-      'Iteration & Continuous Improvement',
+      'APIs with NestJS, Node.js & GraphQL',
+      'Data modeling in PostgreSQL & MySQL',
+      'Docker, servers & deployments',
+      'Git & GitHub workflows',
     ],
   },
   {
-    title: 'UI & Interaction',
+    title: 'Product & UX Design',
     items: [
-      'Visual Consistency & Hierarchy',
-      'Interaction Design',
-      'Responsive Design',
-      'Design Systems',
+      'User research & insights',
+      'User flows & information architecture',
+      'Wireframes & hi-fi prototypes in Figma',
+      'Usability testing & dev handoff',
     ],
   },
+  {
+    title: 'AI & Quality',
+    items: [
+      'AI across research, design, code & QA',
+      'OpenAI & Anthropic API integrations',
+      'Workflow automation with n8n',
+      'Test cases, acceptance criteria & bug tracking',
+    ],
+  },
+];
+
+const contactDetails = [
+  { label: 'Remote', value: 'Worldwide' },
+  { label: 'On-site', value: 'Sucre, Bolivia' },
+  { label: 'Time zone', value: 'UTC−4 (BOT)' },
+  { label: 'Languages', value: 'Spanish · English C1' },
 ];
 
 const socials = [
   {
     href: 'https://instagram.com/ux_harold',
     icon: 'lucide:instagram',
-    label: '/ux_harold',
+    label: 'Instagram',
   },
   {
     href: 'https://linkedin.com/in/haroldrm',
     icon: 'lucide:linkedin',
-    label: '/in/haroldrm',
+    label: 'LinkedIn',
   },
   {
     href: 'https://behance.net/harold-rosado',
     icon: 'social/behance',
-    label: '/harold-rosado',
+    label: 'Behance',
   },
-];
-
-const tools = [
-  { name: 'Figma', icon: 'illustrations/figma' },
-  { name: 'Photoshop', icon: 'illustrations/photoshop' },
-  { name: 'Illustrator', icon: 'illustrations/illustrator' },
 ];
 ---
 
@@ -67,28 +85,45 @@ const tools = [
     <article data-aos="fade-up" data-aos-duration="800">
       <SectionTitle> About Me </SectionTitle>
       <p class="text-secondary max-w-[65ch] text-lg leading-relaxed">
-        UX/UI Designer with over <span class="text-accent font-medium">6 years of experience</span> creating
-        web and mobile products focused on solving real user problems and business goals. My work centers
-        on turning complex ideas into <span class="text-accent font-medium"
-          >clear, usable, and scalable experiences</span
-        >, with a solid foundation in software development that facilitates the real implementation
-        of designs.
+        Full Stack Developer and Product Designer who takes products <span
+          class="text-accent font-medium">from user research to production</span
+        >, with a front-end focus and hands-on back-end experience. I use AI at every stage, from
+        research to testing, to ship faster without compromising quality.
       </p>
+      <dl class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {
+          stats.map((stat) => (
+            <div class="border-border bg-elevated/50 flex flex-col-reverse rounded-2xl border p-4">
+              <dt class="text-secondary text-sm leading-snug">{stat.label}</dt>
+              <dd class="text-accent text-3xl font-bold">{stat.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
     </article>
 
     <article>
-      <SectionTitle data-aos="fade-up"> UX/UI Skills </SectionTitle>
+      <SectionTitle data-aos="fade-up"> What I Do </SectionTitle>
 
-      <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+      <div class="grid grid-cols-1 gap-x-10 gap-y-8 sm:grid-cols-2">
         {
           skills.map((skill, index) => (
-            <div class="flex flex-col gap-3" data-aos="fade-up" data-aos-delay={index * 150}>
-              <h4 class="text-accent flex items-center gap-2 text-2xl font-semibold">
+            <div
+              class="border-border border-t pt-5"
+              data-aos="fade-up"
+              data-aos-delay={index * 150}
+            >
+              <h4 class="text-accent mb-4 flex items-baseline gap-3 text-sm font-semibold tracking-widest uppercase">
+                <span class="text-tertiary tabular-nums">{String(index + 1).padStart(2, '0')}</span>
                 {skill.title}
               </h4>
-              <ul class="ml-4 space-y-1">
+              <ul class="space-y-2.5">
                 {skill.items.map((item) => (
-                  <li class="text-secondary before:text-accent flex items-start gap-2 before:font-bold before:content-['•']">
+                  <li class="text-secondary flex items-start gap-3 leading-snug">
+                    <span
+                      class="bg-accent mt-2 size-1.5 shrink-0 rounded-full"
+                      aria-hidden="true"
+                    />
                     {item}
                   </li>
                 ))}
@@ -96,86 +131,80 @@ const tools = [
             </div>
           ))
         }
-
-        <div class="flex flex-col gap-4" data-aos="fade-up">
-          <h4 class="text-accent text-2xl font-semibold">Design Tools</h4>
-          <div class="flex flex-wrap gap-6">
-            {
-              tools.map((tool) => (
-                <div
-                  class="group flex flex-col items-center gap-2"
-                  data-aos="fade-up"
-                  data-aos-delay={tools.indexOf(tool) * 200}
-                >
-                  <div class="border-border group-hover:border-accent rounded-2xl border p-1 transition-all duration-300 group-hover:scale-110">
-                    <Icon name={tool.icon} class="size-14 object-contain" />
-                  </div>
-                  <span class="text-secondary">{tool.name}</span>
-                </div>
-              ))
-            }
-          </div>
-          <p class="text-secondary mt-2">
-            <span class="text-primary font-bold">Other:</span> Framer, WordPress, Tailwind CSS.
-          </p>
-        </div>
       </div>
     </article>
   </div>
 
   <aside class="lg:col-span-4" data-aos="fade-up" data-aos-duration="800">
-    <div class="space-y-6 lg:sticky lg:top-24">
-      <div
-        class="rounded-3xl border border-indigo-500/30 bg-indigo-500/5 p-4 backdrop-blur-sm md:p-6"
-      >
-        <h4 class="text-accent mb-3 text-2xl font-bold">Contact me</h4>
-
-        <div class="mb-4 space-y-3">
-          <div>
-            <p class="text-secondary mb-1 text-sm font-semibold tracking-widest uppercase">Email</p>
-            <p class="text-primary break-all">haroldrosado90@gmail.com</p>
-          </div>
-          <div>
-            <p class="text-secondary mb-1 text-sm font-semibold tracking-widest uppercase">
-              Location
-            </p>
-            <p class="text-primary">Sucre - Bolivia</p>
-          </div>
-        </div>
-
-        <nav>
-          <ul class="space-y-0.5">
-            {
-              socials.map((social) => (
-                <li>
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    class="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-indigo-600/10"
-                  >
-                    <div class="rounded-lg bg-indigo-600 p-2 text-white transition-transform group-hover:scale-110">
-                      <Icon name={social.icon} class="size-7" />
-                    </div>
-                    <span class="text-secondary group-hover:text-primary transition-colors">
-                      {social.label}
-                    </span>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-          <a
-            href="https://drive.google.com/drive/folders/1JHkavVN_PF6AEvxW0K4fwTU6rQRx2BvO?usp=sharing"
-            target="_blank"
-            rel="no-referrer noopener"
-            class="mt-4 block"
-          >
-            <Button color="accent" variant="filled" fullWidth class="text-nowrap">
-              Download CV
-            </Button>
-          </a>
-        </nav>
+    <div
+      class="flex flex-col gap-4 rounded-3xl border border-indigo-500/30 bg-indigo-500/5 p-5 backdrop-blur-sm md:p-6 lg:sticky lg:top-24"
+    >
+      <div class="flex flex-col items-start gap-3">
+        <h4 class="text-accent text-2xl font-bold">Contact me</h4>
+        <!-- <AvailabilityBadge /> -->
       </div>
+
+      <div>
+        <p class="text-tertiary mb-2 text-xs font-semibold tracking-widest uppercase">Email</p>
+        <a
+          href="mailto:haroldrosado90@gmail.com"
+          class="group text-primary hover:text-accent flex items-center gap-2 break-all transition-colors"
+        >
+          <Icon name="lucide:mail" class="text-accent size-4 shrink-0" aria-hidden="true" />
+          haroldrosado90@gmail.com
+        </a>
+      </div>
+
+      <div>
+        <p class="text-tertiary mb-1 text-xs font-semibold tracking-widest uppercase">
+          Availability
+        </p>
+
+        <dl class="divide-border divide-y">
+          {
+            contactDetails.map((detail) => (
+              <div class="flex items-center justify-between gap-4 py-2.5">
+                <dt class="text-secondary text-sm">{detail.label}</dt>
+                <dd class="text-primary text-right text-sm font-medium">{detail.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <div>
+        <p class="text-tertiary mb-3 text-xs font-semibold tracking-widest uppercase">Find me on</p>
+        <ul class="flex gap-2">
+          {
+            socials.map((social) => (
+              <li>
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  title={social.label}
+                  class="border-accent/20 bg-accent/10 text-accent flex rounded-xl border p-2.5 transition-all duration-300 hover:-translate-y-0.5 hover:bg-indigo-600 hover:text-white"
+                >
+                  <Icon name={social.icon} class="size-6" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <a
+        href="https://drive.google.com/drive/folders/1JHkavVN_PF6AEvxW0K4fwTU6rQRx2BvO?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block"
+      >
+        <Button color="accent" variant="filled" fullWidth class="text-nowrap">
+          <Icon name="lucide:download" class="size-5" aria-hidden="true" />
+          Download CV
+        </Button>
+      </a>
     </div>
   </aside>
 </section>
